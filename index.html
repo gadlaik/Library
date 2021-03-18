@@ -8,6 +8,37 @@
     <title>Library</title>
   </head>
   <body>
+    <div class="container">
+      <h1>Library</h1>
+      <div class="newBook">
+        <h3>ADD NEW BOOK</h3>
+        <div class="addBtn">+</div>
+      </div>
+      <form class="newBookForm">
+        <div class="close">X</div>
+        <li>
+          <label for="title">Title: </label
+          ><input type="text" name="book" id="title" />
+        </li>
+        <li>
+          <label for="author">Author: </label>
+          <input type="text" name="book" id="author" />
+        </li>
+        <li>
+          <label for="pages">Pages: </label
+          ><input type="text" name="book" id="pages" />
+        </li>
+        <li>
+          <label for="Read">Read: </label
+          ><input type="checkbox" name="book" id="read" />
+        </li>
+        <input type="submit" value="Add" />
+      </form>
+      <div class="showBooks">
+        <h2>Show Books</h2>
+      </div>
+      <ul class="library"></ul>
+    </div>
     <script src="/script.js"></script>
   </body>
 </html>

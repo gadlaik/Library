@@ -1,0 +1,117 @@
+body {
+  font-family: monospace;
+}
+.container {
+  width: 50wv;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+h1 {
+  font-family: monospace;
+  font-size: 40px;
+  margin-bottom: 50px;
+}
+.newBookForm {
+  text-align: center;
+  background-color: cadetblue;
+  padding: 0px 20px 20px 20px;
+  border-radius: 3px;
+  display: none;
+}
+.newBookForm li {
+  list-style-type: none;
+  display: flex;
+  font-size: 24px;
+  margin-top: 10px;
+}
+.newBookForm label {
+  width: 100px;
+  display: flex;
+  align-self: flex-start;
+}
+[type="checkbox"] {
+  height: 20px;
+  width: 20px;
+  transform: translateX(-4px);
+}
+[type="submit"] {
+  width: 100px;
+  font-size: 20px;
+  margin-top: 10px;
+  transform: translateX(7px);
+}
+.close {
+  position: relative;
+  right: -150px;
+  top: 5px;
+  font-size: 18px;
+  color: rgb(182, 11, 11);
+  cursor: pointer;
+  margin-bottom: -4px;
+  font-family: sans-serif;
+  font-weight: 600;
+}
+.newBook,
+.showBooks {
+  background-color: greenyellow;
+  border-radius: 3px;
+  border: 1px solid rgba(128, 128, 128, 0.3);
+  height: 100px;
+  width: 200px;
+  text-align: center;
+}
+.newBook h3 {
+  margin-top: 10px;
+  margin-bottom: 25px;
+  text-align: center;
+}
+.addBtn {
+  font-size: 100px;
+  color: rgb(76, 143, 243);
+  cursor: pointer;
+  width: fit-content;
+  line-height: 40px;
+  position: relative;
+  margin: -13px auto auto auto;
+}
+.showBooks {
+  margin-top: 20px;
+  height: 65px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.library {
+  display: none;
+}
+.hide {
+  display: none;
+}
+.show {
+  display: block;
+}
+ul li {
+  padding: 10px;
+  background-color: greenyellow;
+  font-size: 18px;
+  border-radius: 3px;
+  margin-bottom: 3px;
+  list-style-type: none;
+  width: fit-content;
+}
+span {
+  font-size: 30px;
+  line-height: 10px;
+}
+.del {
+  font-size: 24px;
+  background-color: red;
+  padding: 5px 15px 8px 0px;
+  margin-right: -9px;
+  margin-left: 10px;
+  cursor: pointer;
+  color: white;
+}
