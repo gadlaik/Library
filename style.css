@@ -11,7 +11,7 @@ body {
 h1 {
   font-family: monospace;
   font-size: 40px;
-  margin-bottom: 50px;
+  margin-bottom: 33px;
 }
 .newBookForm {
   text-align: center;
@@ -78,6 +78,7 @@ h1 {
 }
 .showBooks {
   margin-top: 20px;
+  margin-bottom: 20px;
   height: 65px;
   cursor: pointer;
   display: flex;
@@ -94,24 +95,28 @@ h1 {
   display: block;
 }
 ul li {
-  padding: 10px;
+  padding: 7px;
   background-color: greenyellow;
   font-size: 18px;
   border-radius: 3px;
-  margin-bottom: 3px;
+  margin-bottom: 5px;
   list-style-type: none;
   width: fit-content;
-}
-span {
-  font-size: 30px;
-  line-height: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.3);
 }
 .del {
   font-size: 24px;
   background-color: red;
-  padding: 5px 15px 8px 0px;
+  padding: 7px 15px 7px 0px;
   margin-right: -9px;
   margin-left: 10px;
   cursor: pointer;
   color: white;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+.read {
+  cursor: pointer;
+  font-size: 20px;
+  line-height: 5px;
 }

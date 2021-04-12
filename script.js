@@ -2,24 +2,37 @@ let myLibrary = [];
 const newBook = document.querySelector(".newBook");
 const newBookForm = document.querySelector(".newBookForm");
 
-function Book(title, author, pages, read) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.read = read;
-}
+// function Book(title, author, pages, read) {
+//   this.title = title;
+//   this.author = author;
+//   this.pages = pages;
+//   this.read = read;
+// }
 
-function addBookToLibrary(book) {
-  myLibrary.push({
-    title: book.title,
-    author: book.author,
-    pages: book.pages,
-    read: book.read,
-  });
-}
+// function addBookToLibrary(book) {
+//   myLibrary.push({
+//     title: book.title,
+//     author: book.author,
+//     pages: book.pages,
+//     read: book.read,
+//   });
+// }
 
-function showBooks(arr) {
-  arr.forEach((book) => console.log(book));
+class Book {
+  constructor(title, author, pages, read) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.read = read;
+  }
+  addBookToLibrary() {
+    myLibrary.push({
+      title: this.title,
+      author: this.author,
+      pages: this.pages,
+      read: this.read,
+    });
+  }
 }
 
 document.querySelector(".newBookForm").addEventListener("submit", (e) => {
@@ -30,7 +43,7 @@ document.querySelector(".newBookForm").addEventListener("submit", (e) => {
   const bookRead = document.querySelector("#read").checked;
   const addBook = new Book(bookTitle, bookAuthor, bookPages, bookRead);
 
-  addBookToLibrary(addBook);
+  addBook.addBookToLibrary();
   newBook.classList.remove("hide");
   newBookForm.classList.remove("show");
   localStorage.setItem("library", JSON.stringify(myLibrary));
@@ -40,9 +53,15 @@ document.querySelector(".showBooks").addEventListener("click", (e) => {
   e.preventDefault();
   document.querySelector(".library").textContent = "";
 
-  myLibrary = JSON.parse(localStorage.getItem("library"));
+  if (document.querySelector(".showBooks > h2").textContent == "Show Books") {
+    document.querySelector(".showBooks > h2").textContent = "Hide Books";
+  } else if (
+    document.querySelector(".showBooks > h2").textContent == "Hide Books"
+  ) {
+    document.querySelector(".showBooks > h2").textContent = "Show Books";
+  }
 
-  console.log(myLibrary);
+  myLibrary = JSON.parse(localStorage.getItem("library"));
 
   myLibrary.forEach((book) => {
     if (book != null) {
@@ -51,7 +70,9 @@ document.querySelector(".showBooks").addEventListener("click", (e) => {
       } written by ${book.author}, ${
         book.pages == "" ? "pages: unknown" : book.pages
       }, read: ${
-        book.read ? "<span>✓</span>" : "X"
+        book.read
+          ? `<span class="read">✓</span>`
+          : `<span class="read unread">X</span>`
       }<span class="del">     Remove</span></li>`;
     }
   });
@@ -72,7 +93,7 @@ document.querySelector(".addBtn").addEventListener("click", (e) => {
 
 document.querySelector("ul").addEventListener("click", (e) => {
   e.preventDefault();
-  if (e.target.nodeName == "SPAN") {
+  if (e.target.classList.contains("del")) {
     myLibrary.forEach((bookie) => {
       if (bookie != null) {
         if (e.target.parentElement.textContent.includes(bookie.title)) {
@@ -82,5 +103,21 @@ document.querySelector("ul").addEventListener("click", (e) => {
     });
     e.target.parentElement.remove();
   }
+
+  if (e.target.classList.contains("read")) {
+    let parent = e.target.parentElement.textContent;
+    myLibrary.forEach((bookz) => {
+      if (parent.includes(bookz.title) && parent.includes(bookz.author)) {
+        if (bookz.read == false) {
+          bookz.read = true;
+          e.target.textContent = "✓";
+        } else if (bookz.read == true) {
+          bookz.read = false;
+          e.target.textContent = "X";
+        }
+      }
+    });
+  }
+
   localStorage.setItem("library", JSON.stringify(myLibrary));
 });
